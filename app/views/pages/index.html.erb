@@ -1,0 +1,57 @@
+<h2>Vue.js Examples</h2>
+
+<div id="app">
+  <p>{{ message }}</p>
+  <p>{{ inputMessage }}</p>
+
+  <input v-model="inputMessage">
+  <h2>List of ToDos</h2>
+  <p v-if="seen">Now you see me</p>
+  <p v-for="todo in todos">{{ todo.text }}</p>
+
+  <input v-model="newTask">
+  <button v-on:click="addTask">Add Task</button>
+  <button v-on:click="changeSeen">Toggle Seen</button>
+
+  <h2>Using Components</h2>
+  <ul>
+    <todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
+  </ul>
+
+  <h3>Computed Properites</h3>
+  <input v-model="computedMessage">
+  <p>Original Message: {{ computedMessage }}</p>
+  <p>Computed Reversed Message: {{ reversedComputedMessage }}</p>
+  <p>Date Now (computed property): {{ now }}</p>
+  <p>Date Now (computed property): {{ dateNow() }}</p>
+
+  <h3>Computed vs Watched Properties</h3>
+  <input v-model="firstName">
+  <input v-model="lastName">
+  <p>Watched Full Name: {{ fullName }}</p>
+  <hr>
+  <input v-model="first">
+  <input v-model="last">
+  <p>Changes to input won't update full name, because computed property is getter-only</p>
+  <input v-model="full">
+  <p>Computed Full Name: {{ full }}</p>
+  <hr>
+  <input v-model="nameFirst">
+  <input v-model="nameLast">
+  <p>Changes to input should now update full name, as well as update the first and last name values because added setter to computed property</p>
+  <input v-model="nameFull">
+  <p>Computed Full Name with getter and setter: {{ nameFull }}</p>
+</div>
+
+<h3>JQuery Number plugin example</h3>
+<p>
+  <span class="number">1025.8702</span>
+  <span class="number">18023</span>
+  <span class="number">982.3</span>
+  <span class="number">.346323</span>
+</p>
+
+<script>
+  $('span.number').number( true, 2 )
+</script>
+
