@@ -55,9 +55,25 @@
 
 <div id="testing-for">
   <ul>
-  <li v-for="item in items">
+  <li v-for="(item, index) in items">
     {{ parentMessage }} - {{ index }} - {{ item.message }}
   </li>
+  </ul>
+</div>
+
+<div id="todo-list-example">
+  <input
+    v-model="newToDoText"
+    v-on:keyup.enter="addNewToDo"
+    placeholder="Add a todo"
+  >
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:title="todo"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
   </ul>
 </div>
 
@@ -68,12 +84,6 @@
   <span class="number">982.3</span>
   <span class="number">.346323</span>
 </p>
-
-<ul id="example-2">
-  <li v-for="(item, index) in items">
-    {{ parentMessage }} - {{ index }} - {{ item.message }}
-  </li>
-</ul>
 
 <script>
   $('span.number').number( true, 2 )

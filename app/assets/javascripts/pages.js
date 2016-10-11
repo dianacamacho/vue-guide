@@ -126,15 +126,30 @@ var vuefor = new Vue({
   }
 })
 
-var example2 = new Vue({
-  el: '#example-2',
+Vue.component('todo-item', {
+  props: ['title'],
+  template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>\
+  '
+})
+
+
+var componentExample = new Vue({
+  el: '#todo-list-example',
   data: {
-    parentMessage: 'Parent',
-    items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
-    ]
+    newToDoText: '',
+    todos: ['todo 1', 'todo 2', 'todo 3']
+  },
+  methods: {
+    addNewToDo: function() {
+      this.todos.push(this.newToDoText);
+      this.newToDoText = '';
+    }
   }
 })
+
 // })
 
